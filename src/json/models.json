@@ -1,0 +1,8 @@
+{
+  "dungeon-forge": {
+    "url": "./glb/dungeon-forge.glb"
+  },
+  "player": {
+    "url": "./glb/player.glb"
+  }
+}
