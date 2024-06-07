@@ -14,7 +14,8 @@ class CameraFactory {
 
     // Conditionally create camera
     if (type == 'perspective') {
-      camera = new PerspectiveCamera(45, ratio, 1, 100);
+      if (options.fov == null) options.fov = 45;
+      camera = new PerspectiveCamera(options.fov, ratio, 1, 100);
     }
     else if (type == 'orthographic') {
       camera = new OrthographicCamera(-ratio, ratio, 1, -1, 1, 100);

@@ -14,18 +14,13 @@ class CameraManager extends Group {
 
   init(options = {}) {
     // Create camera with default position
-    var camera = CameraFactory.create('perspective', {});
-    camera.position.add({ x: 0, y: 8, z: 8 });
-    camera.lookAt(0, 0, 0);
+    var camera = CameraFactory.create('perspective', { fov: 45 });
+    camera.zoom = 2
+    camera.position.add({ x: 7, y: 7, z: 7 });
+    camera.lookAt(0, 2, 0);
     camera.updateProjectionMatrix();
     this.camera = camera; // Assign current camera
     this.add(camera);
-
-    // Assign camera controller to camera
-    if (this.canvas) {
-      this.orbit = new OrbitControls(camera, this.canvas);
-      if (options.orbit == false) this.orbit.enabled = false;
-    }
   }
 
   update(delta, alpha) {

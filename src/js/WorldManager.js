@@ -13,7 +13,7 @@ class WorldManager extends Group {
 
   init(assets) {
     this.worldFactory.init(assets);
-    this.world = this.worldFactory.create('dungeon-forge');
+    this.world = this.worldFactory.create('office');
     this.add(this.world);
   }
 
