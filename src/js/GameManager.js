@@ -11,7 +11,7 @@ class GameManager {
   constructor(canvas) {
     // Initialize scene
     this.scene = new Scene();
-    this.scene.background = new Color('#291013');
+    this.scene.background = new Color('#1F1F1F');
 
     // Initialize components
     this.cameraManager = new CameraManager(canvas);

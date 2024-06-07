@@ -35,7 +35,7 @@ class Graphics {
 
     // Anti-aliasing
     this.smaaPass = new SMAAPass(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio);
-    this.smaaPass.enabled = false;
+    this.smaaPass.enabled = true;
 
     // Initialize pixel effects
     this.pixelatedPass = new RenderPixelatedPass(2, this.scene, this.camera);

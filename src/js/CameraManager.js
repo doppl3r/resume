@@ -14,10 +14,9 @@ class CameraManager extends Group {
 
   init(options = {}) {
     // Create camera with default position
-    var camera = CameraFactory.create('perspective', { fov: 45 });
-    camera.zoom = 2
-    camera.position.add({ x: 7, y: 7, z: 7 });
-    camera.lookAt(0, 2, 0);
+    var camera = CameraFactory.create('perspective', { fov: 25 });
+    camera.position.add({ x: 7, y: 5, z: 7 });
+    camera.lookAt(0, 1.75, 0);
     camera.updateProjectionMatrix();
     this.camera = camera; // Assign current camera
     this.add(camera);
