@@ -50,6 +50,14 @@ html {
         h1 {
           margin: 0;
         }
+
+        .count {
+          color: #ffffff;
+          display: inline-block;
+          text-shadow: 0.125em 0.125em 0em #000000;
+          font-size: 2em;
+          padding: 1em;
+        }
       }
     }
   }

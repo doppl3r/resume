@@ -76,6 +76,9 @@ class GameManager {
 
   click(e) {
     this.throwTrash();
+
+    // Send message back to UI
+    window.dispatchEvent(new CustomEvent('incrementCount'));
   }
 
   toJSON() {
