@@ -22,13 +22,16 @@ class WorldManager extends Group {
 
     // Add game debugger
     this.debugger = new Debugger(scene, this.world);
-    //this.debugger.disable();
-
-    var model = assets.duplicate('office');
-    this.add(model);
+    this.debugger.disable();
+    
+    // Create trimesh from office model
+    var office = this.entityManager.entityFactory.createTriMesh({ model: assets.duplicate('office') });
+    this.entityManager.add(office);
   }
 
   updatePhysics(delta, alpha) {
+    this.entityManager.updateBodies(delta);
+
     // Simulate world
     this.world.step();
     
@@ -37,7 +40,7 @@ class WorldManager extends Group {
   }
 
   updateRender(delta, alpha) {
-    
+    this.entityManager.updateObjects(delta, alpha);
   }
 }
 

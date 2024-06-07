@@ -21,25 +21,15 @@ class EntityFactory {
   }
   
   createCuboid(options) {
-    this.updateOptions(options);
     return new Cuboid(options);
   }
   
   createSphere(options) {
-    this.updateOptions(options);
     return new Sphere(options);
   }
   
   createTriMesh(options) {
-    this.updateOptions(options);
     return new TriMesh(options);
-  }
-
-  updateOptions(options) {
-    // Add model from assets if model name exists
-    if (options.model) {
-      options.model = this.assets.models.duplicate(options.model.name);
-    }
   }
 }
 

@@ -17,6 +17,9 @@ class GameManager {
     this.cameraManager = new CameraManager(canvas);
     this.lightManager = new LightManager();
     this.worldManager = new WorldManager();
+
+    // Add game input listeners
+    this.addEventListeners();
   }
 
   init(assets) {
@@ -31,6 +34,19 @@ class GameManager {
     this.scene.add(this.worldManager);
   }
 
+  throwTrash() {
+    var trash = this.worldManager.entityManager.entityFactory.createCuboid({
+      position: this.cameraManager.camera.position,
+      scale: { x: 0.25, y: 0.25, z: 0.25 }
+    });
+
+    var speed = 8.5;
+    trash.rigidBodyDesc.setLinvel(-speed, 0, -speed);
+    trash.rigidBodyDesc.setAngvel({ x: -4, y: 4, z: 4 });
+
+    this.worldManager.entityManager.add(trash);
+  }
+
   updatePhysics(delta, alpha) {
     // Update world physics
     this.worldManager.updatePhysics(delta, alpha);
@@ -40,6 +56,14 @@ class GameManager {
     this.cameraManager.updateRender(delta, alpha);
     this.lightManager.updateRender(delta, alpha);
     this.worldManager.updateRender(delta, alpha);
+  }
+
+  addEventListeners() {
+    this.cameraManager.canvas.addEventListener('pointerdown', this.click.bind(this));
+  }
+
+  click(e) {
+    this.throwTrash();
   }
 
   toJSON() {

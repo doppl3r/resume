@@ -21,7 +21,7 @@ class Cuboid extends Entity {
     super(options);
 
     // Initialize default cube mesh
-    var geometry = new BoxGeometry(options.scale.x, options.scale.y, options.scale.z);
+    var geometry = new BoxGeometry(1, 1, 1);
     var material = new MeshStandardMaterial({ color: options.color });
     var mesh = new Mesh(geometry, material);
     mesh.receiveShadow = true;
