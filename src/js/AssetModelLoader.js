@@ -34,6 +34,7 @@ class AssetModelLoader extends GLTFLoader {
   addMixer(model) {
     // Check if animations exist
     if (model.animations.length > 0) {
+      var loopType = model.userData.loop || 2201; // 2201 = LoopRepeat, 2200 = LoopOnce
       model.mixer = new AnimationMixer(model);
       model.actions = {};
   
@@ -41,6 +42,10 @@ class AssetModelLoader extends GLTFLoader {
       for (var i = 0; i < model.animations.length; i++) {
         var animation = model.animations[i];
         var action = model.mixer.clipAction(animation);
+        if (loopType == 2200) {
+          action.setLoop(loopType);
+          action.clampWhenFinished = true;
+        }
         action.play(); // Activate action by default
         action.setEffectiveWeight(0); // Clear action influence
         model.actions[animation.name] = action;

@@ -36,14 +36,26 @@ class GameManager {
 
   throwTrash() {
     var trash = this.worldManager.entityManager.entityFactory.createCuboid({
+      model: this.worldManager.entityManager.entityFactory.assets.duplicate('paper'),
       position: this.cameraManager.camera.position,
       scale: { x: 0.25, y: 0.25, z: 0.25 }
     });
 
+    // Adjust paper model
+    trash.model.scale.set(3, 3, 3);
+    trash.model.play('Roll', 0);
+
+    // Launch trash
+    var range = 4;
     var speed = 8.5;
     trash.rigidBodyDesc.setLinvel(-speed, 0, -speed);
-    trash.rigidBodyDesc.setAngvel({ x: -4, y: 4, z: 4 });
+    trash.rigidBodyDesc.setAngvel({
+      x: Math.floor(Math.random() * (range - (-range) + 1) + (-range)),
+      y: Math.floor(Math.random() * (range - (-range) + 1) + (-range)),
+      z: Math.floor(Math.random() * (range - (-range) + 1) + (-range))
+    });
 
+    // Add trash to world
     this.worldManager.entityManager.add(trash);
   }
 

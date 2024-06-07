@@ -11,7 +11,7 @@ class LightManager extends Group {
   }
 
   init() {
-    var light = LightFactory.create('ambient');
+    var light = LightFactory.create('ambient', { shadow: true });
     light.position.set(0, 10, 0);
     this.add(light);
   }

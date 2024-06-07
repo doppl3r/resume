@@ -1,5 +1,11 @@
 {
   "office": {
     "url": "./glb/office.glb"
+  },
+  "paper": {
+    "url": "./glb/paper.glb",
+    "userData": {
+      "loop": 2200
+    }
   }
 }

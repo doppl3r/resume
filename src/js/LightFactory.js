@@ -15,6 +15,7 @@ class LightFactory {
     if (options.groundColor == null) options.groundColor = 0xffffff;
     if (options.intensity == null) options.intensity = Math.PI;
     if (options.distance == null) options.distance = 0; // no limit
+    if (options.shadow == null) options.shadow = false;
     if (options.decay == null) options.decay = 2;
     
     // Conditionally create camera
@@ -32,6 +33,11 @@ class LightFactory {
     else if (type == 'point') {
       light = new PointLight(options.color, options.intensity, options.distance, options.decay);
       helper = new PointLightHelper(light);
+    }
+
+    // Add shadow option
+    if (options.shadow) {
+      light.castShadow = true;
     }
 
     // Add helper after light has been added
