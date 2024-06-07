@@ -16,7 +16,7 @@ class LightManager extends Group {
     this.add(light);
   }
 
-  update(delta, alpha) {
+  updateRender(delta, alpha) {
     
   }
 }

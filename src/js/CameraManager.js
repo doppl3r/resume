@@ -1,5 +1,4 @@
 import { Group } from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { CameraFactory } from './CameraFactory.js';
 
 /*
@@ -22,7 +21,7 @@ class CameraManager extends Group {
     this.add(camera);
   }
 
-  update(delta, alpha) {
+  updateRender(delta, alpha) {
 
   }
 }

@@ -23,7 +23,7 @@ class GameManager {
     // Initialize entity factory and load scene
     this.cameraManager.init();
     this.lightManager.init();
-    this.worldManager.init(assets);
+    this.worldManager.init(assets, this.scene);
 
     // Add components to scene
     this.scene.add(this.cameraManager);
@@ -31,10 +31,15 @@ class GameManager {
     this.scene.add(this.worldManager);
   }
 
-  update(delta, alpha) {
-    this.cameraManager.update(delta, alpha);
-    this.lightManager.update(delta, alpha);
-    this.worldManager.update(delta, alpha);
+  updatePhysics(delta, alpha) {
+    // Update world physics
+    this.worldManager.updatePhysics(delta, alpha);
+  }
+
+  updateRender(delta, alpha) {
+    this.cameraManager.updateRender(delta, alpha);
+    this.lightManager.updateRender(delta, alpha);
+    this.worldManager.updateRender(delta, alpha);
   }
 
   toJSON() {

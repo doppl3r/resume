@@ -29,7 +29,8 @@ class Game {
     this.graphics.setCamera(this.gameManager.cameraManager.camera);
 
     // Add game loops
-    this.loop.add(this.update.bind(this), -1); // -1 = unlimited
+    this.loop.add(this.updatePhysics.bind(this), 30); // Physics
+    this.loop.add(this.updateRender.bind(this), -1); // Render
     this.loop.start();
   }
 
@@ -38,8 +39,12 @@ class Game {
     window.dispatchEvent(new CustomEvent('updateLoading', { detail: { url: url, itemsLoaded: itemsLoaded, itemsTotal: itemsTotal, percent: percent }}));
   }
 
-  update(data) {
-    this.gameManager.update(data.delta, data.alpha);
+  updatePhysics(data) {
+    this.gameManager.updatePhysics(data.delta, data.alpha);
+  }
+
+  updateRender(data) {
+    this.gameManager.updateRender(data.delta, data.alpha);
     this.graphics.render();
   }
 }
