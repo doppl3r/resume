@@ -15,6 +15,9 @@ export default defineConfig({
   ],
   base: './',
   build: {
-    emptyOutDir: true
+    emptyOutDir: true,
+    rollupOptions: {
+      treeshake: false
+    }
   }
 })
