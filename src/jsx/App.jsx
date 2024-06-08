@@ -5,6 +5,7 @@ import { Game } from '../js/Game.js';
 function App() {
   const count = createRef();
   const canvas = createRef();
+  const instructions = createRef();
   const game = window.game = new Game();
   
   // Update canvas render
@@ -21,6 +22,7 @@ function App() {
   // Increment count
   function incrementCount() {
     count.current.innerHTML++;
+    instructions.current.style.display = 'none';
   }
 
   // Return game UI
@@ -29,6 +31,7 @@ function App() {
       <canvas ref={canvas} />
       <div className="ui">
         <div className="count" ref={count}>0</div>
+        <div className="instructions" ref={instructions}>Click to toss Jacob's resume</div>
       </div>
     </>
   )

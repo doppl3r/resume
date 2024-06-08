@@ -1,8 +1,21 @@
-# React + Vite
+# Trash Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Toss Jacob's resume into the trash.
 
-Currently, two official plugins are available:
+## Screenshots
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Gameplay:
+![Screenshot](public/png/screenshot.png)
+
+## Local Development
+
+ - Install NodeJS package libraries: `npm i`
+ - If you get a dependency error, include the `--force` option
+ - Run development libraries `npm run dev`
+ - Use the link it provides
+
+## Build for release
+
+- Run build with `npm run build` to create a fresh `/dist` folder
+- Compress `/dist` folder into a `.zip` file format
+- Upload to Chrome Webstore
