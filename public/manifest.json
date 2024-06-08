@@ -1,11 +1,11 @@
 {
   "manifest_version": 3,
-  "name": "Trash Game",
+  "name": "Resume",
   "description": "Toss Jacob's resume into the trash.",
   "version": "0.0.1",
   "action": {
     "default_popup": "index.html",
-    "default_title": "Trash Game"
+    "default_title": "Resume"
   },
   "icons": { 
     "16": "png/icon16.png", 
