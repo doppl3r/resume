@@ -1,6 +1,6 @@
 # Resume
 
-Toss Jacob's resume into the trash.
+Toss Jacob's resume into the trash. Made with React.js (UI), Three.js (3D), and Rapier.js (Physics).
 
 ## Screenshots
 
@@ -18,4 +18,3 @@ Gameplay:
 
 - Run build with `npm run build` to create a fresh `/dist` folder
 - Compress `/dist` folder into a `.zip` file format
-- Upload to Chrome Webstore

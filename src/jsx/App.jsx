@@ -6,6 +6,7 @@ function App() {
   const count = createRef();
   const canvas = createRef();
   const instructions = createRef();
+  const tutorial = createRef();
   const game = window.game = new Game();
   
   // Update canvas render
@@ -23,6 +24,7 @@ function App() {
   function incrementCount() {
     count.current.innerHTML++;
     instructions.current.style.display = 'none';
+    tutorial.current.style.display = 'none';
   }
 
   // Return game UI
@@ -31,7 +33,8 @@ function App() {
       <canvas ref={canvas} />
       <div className="ui">
         <div className="count" ref={count}>0</div>
-        <div className="instructions" ref={instructions}>Click to toss Jacob's resume</div>
+        <div className="tutorial material-symbols-rounded" ref={tutorial}>arrow_selector_tool</div>
+        <div className="instructions" ref={instructions}>Tap to toss Jacob's resume</div>
       </div>
     </>
   )
