@@ -31,6 +31,10 @@ class Debugger extends LineSegments {
   disable() {
     this.visible = false;
   }
+
+  toggle() {
+    this.visible = !this.visible;
+  }
 }
 
 export { Debugger };

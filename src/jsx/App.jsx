@@ -23,8 +23,11 @@ function App() {
   // Increment count
   function incrementCount() {
     count.current.innerHTML++;
-    instructions.current.style.display = 'none';
     tutorial.current.style.display = 'none';
+  }
+
+  function toggleWireframe(e) {
+    game.gameManager.worldManager.debugger.toggle();
   }
 
   // Return game UI
@@ -34,6 +37,10 @@ function App() {
       <div className="ui">
         <div className="count" ref={count}>0</div>
         <div className="tutorial material-symbols-rounded" ref={tutorial}>arrow_selector_tool</div>
+        <div className="toggle">
+          <input type="checkbox" id="wireframe" onChange={toggleWireframe}></input>
+          <label htmlFor="wireframe"><span>DEBUG</span></label>
+        </div>
         <div className="instructions" ref={instructions}>Tap to toss Jacob's resume</div>
       </div>
     </>
