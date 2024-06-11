@@ -44,7 +44,8 @@ html {
         position: relative;
         pointer-events: none;
         width: 100vw;
-        height: 100vh;
+        height: 100vh; // Fallback for dvh
+        height: 100dvh;
 
         h1 {
           margin: 0;
@@ -57,7 +58,7 @@ html {
           font-size: 2em;
         }
 
-        .tutorial {
+        .hint {
           animation: shrink 1s infinite;
           color: #ffffff;
           text-align: center;
@@ -68,25 +69,27 @@ html {
           left: 50%;
         }
 
-        .instructions {
-          color: #ffffff;
-          display: inline-block;
-          text-align: center;
-          text-shadow: 0.0625em 0.0625em 0em #000000;
-          margin: auto auto 0;
-          font-size: 0.75em;
-          line-height: 1.25em;
+        .top-right {
+          position: absolute;
+          top: 1em;
+          right: 1em;
+        }
+
+        .pdf {
+          background-color: #ffffff;
+          box-shadow: 0.125em 0.125em 0em #000000;
+          display: flex;
+          padding: 0.25em;
+          pointer-events: all;
         }
 
         .toggle {
           background-color: #ffffff;
           box-shadow: 0.125em 0.125em 0em #000000;
           display: flex;
+          margin-bottom: 0.25em;
           padding: 0.25em;
           pointer-events: all;
-          position: absolute;
-          top: 1em;
-          right: 1em;
 
           input {
             display: none;
@@ -110,6 +113,7 @@ html {
             font-size: 0.75em;
             padding-left: 2.5em;
             position: relative;
+            width: 100%;
 
             &:before {
               background-color: #cccccc;
@@ -132,7 +136,21 @@ html {
               height: 1em;
               transition: all 0.1s ease-out;
             }
+
+            span {
+              width: 100%;
+            }
           }
+        }
+
+        .instructions {
+          color: #ffffff;
+          display: inline-block;
+          text-align: center;
+          text-shadow: 0.0625em 0.0625em 0em #000000;
+          margin: auto auto 0;
+          font-size: 0.75em;
+          line-height: 1.25em;
         }
       }
     }
