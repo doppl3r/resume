@@ -1,6 +1,7 @@
 import '../scss/Game.scss'
 import { createRef, useEffect, useState } from 'react'
 import { Game } from '../js/Game.js';
+import Loading from './Loading.jsx'
 
 function App() {
   const count = createRef();
@@ -32,13 +33,18 @@ function App() {
 
   function openPDF(e) {
     window.open('pdf/resume-jacob-debenedetto-2024.pdf', '_blank');
-  }
+    }
+    
+    function openCode(e) {
+      window.open('https://github.com/doppl3r/resume', '_blank');
+    }
 
   // Return game UI
   return (
     <>
       <canvas ref={canvas} />
       <div className="ui">
+        <Loading />
         <div className="count" ref={count}>0</div>
         <div className="top-right">
           <div className="toggle">
@@ -46,8 +52,12 @@ function App() {
             <label htmlFor="wireframe">DEBUG</label>
           </div>
           <div className="toggle">
+            <input type="checkbox" id="code" onChange={openCode}></input>
+            <label htmlFor="code">GIT</label>
+          </div>
+          <div className="toggle">
             <input type="checkbox" id="pdf" onChange={openPDF}></input>
-            <label htmlFor="pdf"><span>PDF</span></label>
+            <label htmlFor="pdf">PDF</label>
           </div>
         </div>
         <div className="hint material-symbols-rounded" ref={hint}>arrow_selector_tool</div>

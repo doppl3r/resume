@@ -56,6 +56,7 @@ html {
           display: inline-block;
           text-shadow: 0.0625em 0.0625em 0em #000000;
           font-size: 2em;
+          position: relative;
         }
 
         .hint {
@@ -88,7 +89,6 @@ html {
           box-shadow: 0.125em 0.125em 0em #000000;
           display: flex;
           margin-bottom: 0.25em;
-          padding: 0.25em;
           pointer-events: all;
 
           input {
@@ -100,7 +100,7 @@ html {
               }
               
               &:after {
-                left: 1em;
+                left: 1.25em;
                 background-color: #2c8afa;
                 border-color: #0a61cb;
               }
@@ -111,15 +111,15 @@ html {
             cursor: pointer;
             display: flex;
             font-size: 0.75em;
-            padding-left: 2.5em;
+            padding: 0.25em 0.25em 0.25em 2.5em;
             position: relative;
             width: 100%;
 
             &:before {
               background-color: #cccccc;
               position: absolute;
-              left: 0;
-              bottom: 0;
+              left: 0.25em;
+              bottom: 0.25em;
               content: '';
               width: 2em;
               height: 1em;
@@ -130,8 +130,8 @@ html {
               border-bottom: 0.25em solid #555555;
               content: '';
               position: absolute;
-              left: 0;
-              bottom: 0;
+              left: 0.25em;
+              bottom: 0.25em;
               width: 1em;
               height: 1em;
               transition: all 0.1s ease-out;
@@ -151,6 +151,47 @@ html {
           margin: auto auto 0;
           font-size: 0.75em;
           line-height: 1.25em;
+        }
+
+        .loading {
+          background-color: #c1eaff;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Comfortaa-Bold';
+          align-items: center;
+          justify-content: center;
+          pointer-events: none;
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 1;
+          transition: all 0.5s ease-in-out;
+
+          &.hidden {
+            opacity: 0;
+          }
+      
+          .bar {
+            width: 50%;
+            padding: 0.25em;
+            margin: 1em 0em;
+            border: 0.25em solid #ffffff;
+            box-shadow: inset 0.125em 0.125em 0em #000000, 0.125em 0.125em 0em #000000;
+      
+            .progress {
+              background-color: #ffffff;
+              box-shadow: 0.125em 0.125em 0em #000000;
+              transition: all 0.25s ease;
+              height: 1em;
+            }
+          }
+      
+          label {
+            color: #ffffff;
+            font-size: 1em;
+          }
         }
       }
     }
