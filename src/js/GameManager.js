@@ -52,7 +52,8 @@ class GameManager {
       var trash = this.worldManager.entityManager.entityFactory.createCuboid({
         model: this.worldManager.entityManager.entityFactory.assets.duplicate('paper'),
         position: this.cameraManager.camera.position,
-        scale: { x: 0.25, y: 0.25, z: 0.25 }
+        scale: { x: 0.25, y: 0.25, z: 0.25 },
+        ccd: true
       });
 
       // Adjust paper model

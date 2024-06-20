@@ -20,7 +20,8 @@ class Entity {
       isEnabled: true,
       isSensor: false,
       shape: null,
-      model: null
+      model: null,
+      ccd: false
     }, options);
 
     // Apply defaults
@@ -31,6 +32,7 @@ class Entity {
     this.rigidBodyDesc.setTranslation(options.position.x, options.position.y, options.position.z);
     this.rigidBodyDesc.setRotation(options.quaternion);
     this.rigidBodyDesc.setEnabled(options.isEnabled);
+    this.rigidBodyDesc.setCcdEnabled(options.ccd);
     
     // Initialize collider description
     this.colliderDesc = new ColliderDesc(options.shape);
