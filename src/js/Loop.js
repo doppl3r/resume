@@ -1,6 +1,6 @@
 /*
   Executes single or multiple functions at a recurring frequency. The first
-  function loop determines the shared alpha value for all sibling functions.
+  action determines the shared alpha value for all sibling functions.
 
   Tip: Add your physics function first (ex: 30hz), then add the rendering
   function at a higher frequency (ex: -1 = unlimited). Use the alpha value
@@ -19,36 +19,36 @@ class Loop {
     this.running = false;
   }
 
-  add(callback = function(){}, tick = -1) {
+  add(callback = () => {}, frequency = -1) {
     // Add callback function to array of functions
     this.actions.push({
-      rate: 1 / tick,
-      sum: 1 / tick,
+      rate: 1 / frequency,
+      sum: 1 / frequency,
       alpha: 0,
       callback: callback // Execute function after each interval
     });
   }
 
-  update(loop) {
+  update(animationFrameCallback) {
     if (this.running == true) {
       // Request visual update function before next repaint
-      requestAnimationFrame(function(){ loop.update(loop); });
+      requestAnimationFrame(animationFrameCallback);
 
       // Check if functions exist
       if (this.actions.length > 0) {
         var delta = this.getDelta();
-        var alpha = this.actions[0].sum / this.actions[0].rate; // Set alpha relative to first interval
+        var alpha = this.actions[0].sum / this.actions[0].rate; // Set alpha relative to base interval
 
         // Loop through array of functions (descending order)
-        for (var i = this.actions.length - 1; i >= 0; i--) {
-          this.actions[i].sum += delta;
+        for (var index = this.actions.length - 1; index >= 0; index--) {
+          this.actions[index].sum += delta;
 
-          // Trigger this.actions[i] callback
-          if (this.actions[i].sum >= this.actions[i].rate || this.actions[i].rate == -1) {
-            this.actions[i].sum %= this.actions[i].rate;
-            this.actions[i].callback({
-              delta: (this.actions[i].rate == -1) ? delta : this.actions[i].rate,
-              alpha: alpha
+          // Trigger this.actions[index] callback
+          if (this.actions[index].sum >= this.actions[index].rate || this.actions[index].rate == -1) {
+            this.actions[index].sum %= this.actions[index].rate;
+            this.actions[index].callback({
+              delta: (this.actions[index].rate == -1) ? delta : this.actions[index].rate,
+              alpha: (index == 0) ? 0 : alpha // Return zero for base action or alpha for sibling actions
             });
           }
         }
@@ -61,7 +61,15 @@ class Loop {
     this.oldTime = this.startTime;
     this.elapsedTime = 0;
     this.running = true;
-    this.update(this);
+
+    // Create recursive callback function
+    var animationFrameCallback = function() {
+      // Run update function with callback
+      this.update(animationFrameCallback);
+    }.bind(this);
+
+    // Start recursive callback loop
+    animationFrameCallback();
   }
 
   stop() {

@@ -15,6 +15,7 @@ class WorldManager extends Group {
   init(assets, scene) {
     // Initialize Rapier world
     this.world = new World({ x: 0.0, y: -9.81, z: 0.0 });
+    this.world.timestep =  1 / 30;
 
     // Initialize entity manager
     this.entityManager = new EntityManager(scene, this.world);

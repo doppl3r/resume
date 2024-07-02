@@ -29,7 +29,7 @@ class Game {
     this.graphics.setCamera(this.gameManager.cameraManager.camera);
 
     // Add game loops
-    this.loop.add(this.updatePhysics.bind(this), 60); // Physics
+    this.loop.add(this.updatePhysics.bind(this), 30); // Physics
     this.loop.add(this.updateRender.bind(this), -1); // Render
     this.loop.start();
   }
